@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="container-fluid" style="margin-bottom: 80px; margin-top: 40px;">
+      <div class="form-style-6">
+        <h1>Country Details</h1>
+
+        <div class="table-hover-sm table-responsive"
+           *ngFor="let result of results | paginate: { itemsPerPage: 1, currentPage: page,totalItems: gettingTotal }">
+        <table class="table table-striped table-bordered table-hover">
+
+          <tbody>
+          <tr scope="row">
+            <th>Contry name :</th>
+            <th>{{result.name}}</th>
+          </tr>
+          <tr scope="row">
+            <th>Flag :</th>
+            <th><img [src]=result.flag></th>
+          </tr>
+          <tr scope="row">
+            <th>Alpha2 code :</th>
+            <th>{{result.alpha2Code}}</th>
+          </tr>
+          <tr scope="row">
+            <th>Alpha3 code :</th>
+            <th>{{result.alpha3Code}}</th>
+          </tr>
+          <tr scope="row">
+            <th>Calling code :</th>
+            <th>{{result.callingCodes[0]}}</th>
+          </tr>
+          <tr scope="row">
+            <th>Region :</th>
+            <th>{{result.region}}</th>
+          </tr>
+          <tr scope="row">
+            <th>Population :</th>
+            <th>{{result.population}}</th>
+          </tr>
+          <tr scope="row">
+            <th>Timezone :</th>
+            <th>{{result.timezones[0]}}</th>
+          </tr>
+          <tr scope="row">
+            <th>Borders :</th>
+            <th>
+              <div *ngFor="let border of result.borders;let i = index ">
+                <table class="table table-striped table-bordered table-hover">
+                  <tr>
+                    <th>{{i + 1}} :</th>
+                    <th>{{border}}</th>
+                  </tr>
+                </table>
+              </div>
+            </th>
+          </tr>
+          <tr scope="row">
+            <th>Currencies :</th>
+            <th>
+              <div *ngFor="let currency of result.currencies;let i = index ">
+                <table class="table table-striped table-bordered table-hover">
+                  <tr>
+                    <th>{{i + 1}} :</th>
+                    <th>Currency code :</th>
+                    <th>{{currency.code}}</th>
+                  </tr>
+                  <tr>
+                    <th>{{i + 2}} :</th>
+                    <th>Currency name :</th>
+                    <th>{{currency.name}}</th>
+                  </tr>
+                  <tr>
+                    <th>{{i + 3}} :</th>
+                    <th>Currency symbol :</th>
+                    <th>{{currency.symbol}}</th>
+                  </tr>
+                </table>
+              </div>
+            </th>
+          </tr>
+
+
+          <tr scope="row">
+            <th>Languages :</th>
+            <th>
+              <div *ngFor="let language of result.languages;let i = index ">
+                <table class="table table-striped table-bordered table-hover">
+                  <tr>
+                    <th>Name :</th>
+                    <th>{{language.name}}</th>
+                  </tr>
+                  <tr>
+                    <th>Native name :</th>
+                    <th>{{language.nativeName}}</th>
+                  </tr>
+                </table>
+              </div>
+            </th>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="text-align: center">
+        <pagination-controls (pageChange)="pageChanged($event)" style="text-align: center;"></pagination-controls>
+      </div>
+      </div>
+    </div>
+  </div>
